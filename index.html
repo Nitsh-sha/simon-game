@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simon Game</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<section class="wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="game_section">
+                <button id="myBtn" type="button" class="btn btn-danger btn-lg btn_sett" data-toggle="modal" data-target="#myModal">
+                    Settings
+                </button>
+                <button id="btn-start" type="button" class="btn btn-danger btn-lg">
+                    Start
+                </button>
+                <div class="row_top">
+                      <div id="blue" class="btn_game clickMe"></div>
+                </div>
+                <div class="row_middle">
+                    <div id="green" class="btn_game clickMe"></div>
+                        <div id="game_turn">
+                            <h2 id="num_click" class="statement">0</h2>
+                        </div>
+                    <div id="pink" class="btn_game clickMe"></div>
+                </div>
+                <div class="row_bottom">
+                    <div id="yellow" class="btn_game clickMe"></div>
+                <div>
+            </div>
+        </div>
+    </div>      
+</section>
+
+<!-- Button -->
+<!-- <div>
+    <a class="btn-show trigger" href="#">click me</a>
+</div>  -->
+
+
+<!-- Modal Win -->
+<div class="modal_result_wrapper">
+    <div class="modal modal_result">
+        <div class="head_result">
+            <a class="btn-close trigger" href="#">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="content_result">
+            <div class="good-job">
+                <h1>Good Job!</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Lose -->
+<!-- <div class="modal-wrapper">
+    <div class="modal">
+        <div class="head">
+            <a class="btn-close trigger" href="#">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="content">
+            <div class="good-job">
+                <h1>Too bad!</h1>
+            </div>
+        </div>
+    </div>
+</div> -->
+   
+<!-- Modal setting -->
+<div class="modal fade" id="myModal modal-sett" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Game Settings</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>   
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 text-center strict_mode strict_mode-on">
+                        <button id="strict" type="button" class="btn btn-info" >Strict mode off</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center reset_mode">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Reset</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="custom.js"></script>
+</body>
+
+</html>
+

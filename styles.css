@@ -1,0 +1,227 @@
+/* $fontstack: 'Ubuntu', open sans
+$blue-jeans: #5BC0EB
+$gorgoyle-gas: #FDE74C
+$android-green: #9BC53D
+$english-vermillion: #C3423F
+$fiery-rose: #F05969 */
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1e0c1c;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.row_top {
+  display: flex;
+  justify-content: center;
+}
+.row_middle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 15px auto;
+}
+.row_bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.game_section {
+  max-width: 480px;
+  margin: 25px auto;
+}
+
+/*--- button ---*/
+.btn_game {
+  width: 90px;
+  height: 90px;
+  border-radius: 400px;
+}
+
+.btn_strict-green {
+  background-color: #9BC53D;
+  border-color: #9BC53D;
+}
+
+.btn_strict-green:hover {
+  background-color: rgb(111, 143, 41);
+  border-color:  rgb(111, 143, 41);
+}
+#blue {
+  border: 4px solid #5BC0EB;
+  margin: 20px;
+}
+#blue:active {
+  background-color: #5BC0EB;
+}
+
+.blue-hover {
+  background-color: #5BC0EB;
+}
+
+#green {
+  border: 4px solid #9BC53D;
+  margin: 20px;
+}
+#green:active {
+  background-color: #9BC53D;
+}
+
+.green-hover {
+  background-color: #9BC53D;
+}
+
+#pink {
+  border: 4px solid #F05969;
+  margin: 20px;
+}
+#pink:active {
+  background-color: #F05969;
+}
+
+.pink-hover {
+  background-color: #F05969;
+}
+
+#yellow {
+  border: 4px solid #FDE74C;
+  margin: 20px;
+}
+#yellow:active {
+  background-color: #FDE74C;
+}
+
+.yellow-hover {
+  background-color: #FDE74C;
+}
+
+.btn_sett {
+  font-size: 1em;
+  transition: 500ms;
+  width: 100px;
+  margin-right: 360px;
+  background-color: rgb(164, 89, 240);
+  border-color: rgb(164, 89, 240);
+}
+.btn_sett:hover {
+  background-color: rgb(143, 49, 121);
+  border-color: rgb(143, 49, 121);
+}
+
+.btn-danger {
+  border-color: rgb(164, 89, 240);
+}
+
+
+/*--- modal setting ---*/
+.modal-title {
+  color: #071013;
+  text-align: center;
+}
+.reset_mode {
+  color: #071013;
+  text-align: center;
+}
+
+.strict_mode {
+  margin-bottom: 10px;
+}
+
+
+
+/*--- Modal result ---*/
+.blur-it {
+  filter: blur(4px);
+}
+
+a.btn-show {
+  width: 200px;
+  padding: 18px 0;
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Ubuntu', open-sans;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 0;
+  background: #e2525c;
+}
+
+.modal_result_wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  background: rgba(41, 171, 164, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.modal_result_wrapper.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal_result {
+  width: 600px;
+  height: 400px;
+  display: block;
+  margin: 60% 0 0 -300px;
+  position: relative;
+  top: 50%; 
+  left: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.modal_result_wrapper.open .modal_result {
+  margin-top: -200px;
+  opacity: 1;
+}
+
+.head_result { 
+  width: 100%;
+  height: 60px;
+  padding: 12px 30px;
+  overflow: hidden;
+  background: #e2525c;
+}
+
+.btn-close {
+  font-size: 28px;
+  display: block;
+  float: right;
+  color: #fff;
+}
+
+.content_result {
+  padding: 10%;
+}
+
+.good-job {
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  top: 20px;
+  font-family: 'Ubuntu', open-sans;
+  color: #e2525c;
+}
+
+.good-job h1 {
+  font-size: 60px; 
+}
