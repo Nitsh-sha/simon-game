@@ -14,20 +14,22 @@
 <body>
 <section class="wrapper">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 padding-fix">
             <div class="game_section">
-                <button id="myBtn" type="button" class="btn btn-danger btn-lg btn_sett" data-toggle="modal" data-target="#myModal">
-                    Settings
-                </button>
-                <button id="btn-start" type="button" class="btn btn-danger btn-lg">
-                    Start
-                </button>
+                <div class="game_sett">
+                    <button id="myBtn" type="button" class="btn btn-danger btn-lg btn_sett" data-toggle="modal" data-target="#myModal">
+                        Settings
+                    </button>
+                    <button id="btn-start" type="button" class="btn btn-danger btn-lg">
+                        Start
+                    </button>
+                </div>
                 <div class="row_top">
                       <div id="blue" class="btn_game clickMe"></div>
                 </div>
                 <div class="row_middle">
                     <div id="green" class="btn_game clickMe"></div>
-                        <div id="game_turn">
+                        <div id="game_statement">
                             <h2 id="num_click" class="statement">0</h2>
                         </div>
                     <div id="pink" class="btn_game clickMe"></div>
@@ -40,6 +42,30 @@
     </div>      
 </section>
 
+<!-- Modal setting -->
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Game Settings</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>   
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 text-center strict_mode">
+                        <button id="strict" type="button" class="btn btn-info" data-click-state="1">Strict mode off</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center reset_mode">
+                    <button id="reset" type="button" class="btn btn-warning" data-dismiss="modal">Reset</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Button -->
 <!-- <div>
     <a class="btn-show trigger" href="#">click me</a>
@@ -47,7 +73,7 @@
 
 
 <!-- Modal Win -->
-<div class="modal_result_wrapper">
+<!-- <div class="modal_result_wrapper">
     <div class="modal modal_result">
         <div class="head_result">
             <a class="btn-close trigger" href="#">
@@ -60,7 +86,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Modal Lose -->
 <!-- <div class="modal-wrapper">
@@ -78,29 +104,7 @@
     </div>
 </div> -->
    
-<!-- Modal setting -->
-<div class="modal fade" id="myModal modal-sett" tabindex="-1">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Game Settings</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>   
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12 text-center strict_mode strict_mode-on">
-                        <button id="strict" type="button" class="btn btn-info" >Strict mode off</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center reset_mode">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Reset</button>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 

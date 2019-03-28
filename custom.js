@@ -1,10 +1,10 @@
-let game = {
+var game = {
     playerCount: [],
     gameCount: [],
-    win: false,
     strict: false,
     totalLevel: 3,
     level: 0,
+    good: true,
     colors: ["blue", "green", "pink", "yellow"],
     color: '',
     sound: {
@@ -13,189 +13,221 @@ let game = {
         pink: new Audio('coin_5.wav'),
         yellow: new Audio('coin_6.wav'),
     },
-    count: 0,
+    // count: 0,
     generateRandomColor: function (){
-        game.gameCount.push(game.colors[Math.floor(Math.random() * game.colors.length)]);
-        console.log("Generated color " + game.gameCount);
+        this.gameCount.push(this.colors[Math.floor(Math.random() * this.colors.length)]);
+        console.log("Generated color " + this.gameCount);
     },
+}
 
-};
- 
 
-$(function(){
-    // Start game //
-    $("#btn-start").click(function() {
-        console.log('click');
-        game.level++;
-        startGame();
-        // game.count = 0;
-        // game.strict = false;
-        // game.gameCount = [];
-        // game.playerCount = [];
-        // if(!game.gameCount.length){
-        //     game.generateRandomColor();
-        // };
-
-        //click listener //
-        $(".clickMe").click(function() {
-            color = $(this).attr("id");
-            console.log("Click Color " + color);
-            game.playerCount.push(color);
-            console.log(color);
-            addTempClass(color);
-            // check player count
-            if(!checkPlayerCount()) {
-                showError();
-                game.playerCount = [];
-            }
-            // check end of level
-            if(game.playerCount.length == game.gameCount.length && game.playerCount.length < game.totalLevel){
-                game.level++;
-                game.playerCount = [];
-                startGame();
-            }
-            // check for winning 
-            if(game.playerCount.length == game.totalLevel) {
-                $(".statement").text("Win! High five!");
-            }
-
-        });
-        
-    });
-
-    // Show error //
-    let showError = function(){
-        console.log("error");
-        game.count = 0;
-        let playerError = setInterval(function() {
-            $(".statement").text("Wrong!");
-            game.count++;
-            if(game.count == 3) {
-                $(".statement").text(game.level);
-                clearInterval(playerError);
-                game.playerCount = [];
-                game.count = 0;
-            }
-        }, 500);
+// strict listener//
+$("#strict").click(function(){
+    if($(this).attr('data-click-state') == 1) {
+        game.strict = true;
+        $(this).attr('data-click-state', 0)
+        $(this).text("Strict mode on").addClass("btn_strict-green")
+    } 
+    else {
+        game.strict = false;
+        $(this).attr('data-click-state', 1)
+        $(this).text("Strict mode off").removeClass("btn_strict-green")
     }
-
-    // check player move if correct
-    let checkPlayerCount = function() {
-        for(var i = 0; i < game.playerCount.length; i++) {
-            if(game.playerCount[i] != game.gameCount[i]){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Game sequence //
-    let startGame = function(){
-        console.log(game.level);
-        $(".statement").text(game.level);
-        game.generateRandomColor();
-        let i = 0;
-        let gameInterval = setInterval(function(){
-            game.color = game.gameCount[i];
-            console.log(game.color);
-            addTempClass(game.color);
-            i++;
-            if(i == game.gameCount.length){
-                clearInterval(gameInterval);   
-            }
-        }, 900);
-    };
-
-   
- 
-
-    // Add temporary color class
-    let addTempClass = function(color){
-        $("#" + color).addClass(color +"-hover");
-        playSound(color);
-        setTimeout (function() {
-            $("#" + color).removeClass(color+"-hover");
-        }, 400);
-    };
-
-     // Play sound //
-     let playSound = function(color) {
-        switch(color) {
-            case'blue':
-                game.sound.blue.play();
-                break;
-            case'green':
-                game.sound.green.play();
-                break;
-            case'pink':
-                game.sound.pink.play();
-                break;
-            case'yellow':
-                game.sound.yellow.play();
-                break;
-        };
-      };
+    console.log("from strict listener strict mode " + game.strict);
+    clearGame();
+    game.level++;
+    gameMove();
+})
 
 
-
-
-    // // change strict mode
-    // $('#strict').click(function(){
-    //     if (game.strict == false) {
-    //         game.strict = true;
-    //         $('#strict').html('Strict mode on').addClass('btn_strict-green');
-    //         } else {
-    //         game.strict = false;
-    //         $('#strict').html('Strict mode off').removeClass('btn_strict-green');
-    //         }
-    //         console.log(game.strict);
-            
-    //         clearGame();
-
-    // });
-
-
-    // // trigger model setting
-    //     // Get the modal
-    // let modal = $('#myModal');
-
-    //     // Get the button that opens the modal
-    // let btn = $("#myBtn");
-
-    //     // Get the <span> element that closes the modal
-    // let closeBtn = $("#modal-sett .close");
-
-    //     // When the user clicks on the button, open the modal 
-    // btn.onclick = function() {
-    // modal.style.display = "block";
-    // };
-
-    //     // When the user clicks on (x), close the modal
-    // closeBtn.onclick = function() {
-    // modal.style.display = "none";
-    // };
-
-    //     // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function(event) {
-    // if (event.target == modal) {
-    //     modal.style.display = "none";
-    //     };
-    // };
-    
-
-    
-    // // trigger model result 
-    // $('.trigger').on('click', function() {
-    //     $('.modal_result_wrapper').toggleClass('open');
-    //     $('.wrapper').toggleClass('blur-it');
-    //     return false;
-    //  });
-
-
-
-
-
-
-
+// start button listener
+$("#btn-start").click(function() {
+    clearGame();
+    console.log("from start");
+    console.log(game.gameCount);
+    console.log(game.playerCount);
+    console.log(game.color);
+    game.level++;
+    gameMove();
 });
+
+//click listener //
+$(".clickMe").click(function() {
+    game.color = $(this).attr("id");
+    console.log("Click Color " + game.color);  
+    playerMove(); 
+});
+
+// setting listener //
+$(".button_sett").click(function(){
+    showSetting();
+})
+
+// reset listener //
+$("#reset").click(function(){
+    gameReset();
+})
+
+// reset game //
+function gameReset (){
+    clearGame();
+    gameMove();
+}
+
+// show settings //
+function showSetting(){
+    let modal = $('#myModal');
+    let btn = $("#myBtn");
+    let closeBtn = $("#myModal .close");
+    modal.style.display = "block";
+    // When click close button
+    $(closeBtn).click(function() {
+        modal.style.display = "none";
+    });
+    // When the user clicks anywhere outside of the modal, close it
+    $(window).click(function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        };
+    });
+}
+
+// Show error //
+function showError (){
+    console.log("from showError: wrong");
+    let gameCount = 0;
+    let playerError = setInterval(function() {
+        $(".statement").text("Wrong! Try again");
+        gameCount++;
+        if(gameCount == 3) {
+            $(".statement").text(game.level);
+            clearInterval(playerError);
+            game.playerCount = [];
+            gameCount = 0;
+        }
+    }, 300);
+}
+
+// Add temporary color class
+function addTempClass (color){
+    $("#" + color).addClass(color +"-hover");
+    playSound(color);
+    setTimeout (function() {
+        $("#" + color).removeClass(color+"-hover");
+    }, 400);
+}
+
+// Play sound //
+function playSound(color) {
+    switch(color) {
+        case'blue':
+            game.sound.blue.play();
+            break;
+        case'green':
+            game.sound.green.play();
+            break;
+        case'pink':
+            game.sound.pink.play();
+            break;
+        case'yellow':
+            game.sound.yellow.play();
+            break;
+        };
+}
+
+
+// Player move //
+function playerMove (){
+    game.playerCount.push(game.color);
+    console.log("from playerMove");
+    console.log(game.gameCount);
+    console.log(game.playerCount);
+    console.log(game.color);
+    addTempClass(game.color);   
+    // check player count //
+    checkPlayerCount();
+    checkWin();
+}
+
+// check player move if correct
+function checkPlayerCount () {
+    for(var i = 0; i < game.playerCount.length; i++) {
+        if(game.playerCount[i] != game.gameCount[i]){
+            game.good = false;
+            console.log("from checkPlayerCount " + game.good);
+            return false;
+        }
+        game.good = true;
+        console.log("from checkPlayerCount " + game.good);        
+    }   
+}
+
+// Check if player is correct //
+function checkWin () {
+    if(!game.good) {
+        // if strict mode//
+        if(game.strict){
+            console.log("from playerMove " + game.strict);
+            game.gameCount = [];
+            game.level = 1;
+        }
+        game.good = false;
+        showError();
+        game.playerCount = [];
+        gameMove();
+    }
+    // check end of level
+    else if (game.playerCount.length == game.gameCount.length && game.playerCount.length < game.totalLevel){
+        game.level++;
+        game.playerCount = [];
+        game.good = true;
+        gameMove();
+    }
+    // check for winning 
+    else if (game.playerCount.length == game.totalLevel) {
+        $(".statement").text("Win! High five!"); 
+        setTimeout (function() {
+            $(".statement").text(game.level);
+        }, 1000);
+        clearGame();
+    }  
+}
+
+// Game move //
+function gameMove(){
+    console.log("from gameMove " + game.level);
+    $(".statement").text(game.level);
+    if(game.good){
+        game.generateRandomColor();
+        console.log("generated from gameMove if game.good");
+    }
+    if(!game.good && game.strict){
+        game.generateRandomColor();
+        console.log("generated from gameMove if !game.good");
+    }
+    var i = 0;
+    var gameInterval = setInterval(function(){
+        gameColor = game.gameCount[i];
+        console.log(gameColor);
+        addTempClass(gameColor);
+        i++;
+        if(i == game.gameCount.length){
+            clearInterval(gameInterval);   
+        }
+    }, 1000);
+}
+
+
+// clear game //
+function clearGame (){
+    game.level = 0;
+    game.good = true;
+    game.count = 0;
+    game.color ='';
+    game.gameCount = [];
+    game.playerCount = [];
+}
+
+
+
 
