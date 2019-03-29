@@ -2,7 +2,7 @@ var game = {
     playerCount: [],
     gameCount: [],
     strict: false,
-    totalLevel: 3,
+    totalLevel: 20,
     level: 0,
     good: true,
     colors: ["blue", "green", "pink", "yellow"],

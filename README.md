@@ -60,3 +60,21 @@ If the player is correct, then we have 2 conditions to check
 Game testing:
 I have strategically added “console.log” function on all major steps in order to make sure that the game has no errors and able to fix any errors that occur.
 
+To test the game, I change game.totalLevel = 4
+So that I do not have to play the game 20 times.
+
+When the page first load, game level shows "0". 
+
+"Start button" turns darker when hovered on. Pressing on the button initiate the game. The game level changes to 1 and game sequence start at one step. The button glows specific colour according to the sequence with accompany sound.
+ - Player press the right button -  the button glows specific colour according to the sequence with accompany sound. Game level changes to 2. Game sequence then starts with the same step and increase by one (now 2 steps). Player continues to press the correct buttons. Game level changes to 3, step increases to 3 steps. Player continues to press the correct buttons. Game level changes to 4, step increases to 4 steps. Player constinues to press the correct buttons sequence. Winning notification appears. Then the game automatically reset. Game level shows "0". Player needs to press the start button to play again.
+ - Player press the wrong button (strict mode off) game level shows does not increase and shows the same level. Game sequence repeats to remind the player of the correct sequence.
+ - Player ress the wrong button (strict mode on) game lovel shows level 1. Game sequence restart from one step.
+
+When hover on setting button, the colour changes to darker purple. Clicking on setting button shows a modal with 2 buttons - "Strict mode off" and "Reset". When hovered on each button, the colour changes to darker colour. When click on the "x" top right. The modal closes. 
+
+Strict mode can be changed during or before starting the game. 
+When clicked on the "Strict mode", the button changes colour from blue to yellow and the text changes to "Strict mode on". The modal closes automatically. Game level changes to 1 and new game starts automatically without having to press the "Start button".
+
+Reset button can also be clicked during or before the game. When clicked, the modal closes automatically. Game level changes to 1 and new game starts automatically without having to press the "Start button".
+
+
