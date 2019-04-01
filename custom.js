@@ -8,10 +8,10 @@ var game = {
     colors: ["blue", "green", "pink", "yellow"],
     color: '',
     sound: {
-        blue: new Audio('coin_1.wav'),
-        green: new Audio('coin_4.wav'),
-        pink: new Audio('coin_5.wav'),
-        yellow: new Audio('coin_6.wav'),
+        blue: new Audio('sound_1.mp3'),
+        green: new Audio('sound_2.mp3'),
+        pink: new Audio('sound_3.mp3'),
+        yellow: new Audio('sound_4.mp3'),
     },
     // count: 0,
     generateRandomColor: function (){
