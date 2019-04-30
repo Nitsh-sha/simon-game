@@ -8,10 +8,10 @@ var game = {
     colors: ["blue", "green", "pink", "yellow"],
     color: '',
     sound: {
-        blue: new Audio('sound_1.mp3'),
-        green: new Audio('sound_2.mp3'),
-        pink: new Audio('sound_3.mp3'),
-        yellow: new Audio('sound_4.mp3'),
+        blue: new Audio('assets/sound_1.mp3'),
+        green: new Audio('assets/sound_2.mp3'),
+        pink: new Audio('assets/sound_3.mp3'),
+        yellow: new Audio('assets/sound_4.mp3'),
     },
     // count: 0,
     generateRandomColor: function (){
@@ -33,7 +33,6 @@ $("#strict").click(function(){
         $(this).attr('data-click-state', 1)
         $(this).text("Strict mode off").removeClass("btn_strict-green")
     }
-    console.log("from strict listener strict mode " + game.strict);
     clearGame();
     game.level++;
     gameMove();
@@ -43,10 +42,6 @@ $("#strict").click(function(){
 // start button listener
 $("#btn-start").click(function() {
     clearGame();
-    console.log("from start");
-    console.log(game.gameCount);
-    console.log(game.playerCount);
-    console.log(game.color);
     game.level++;
     gameMove();
 });
@@ -54,7 +49,6 @@ $("#btn-start").click(function() {
 //click listener //
 $(".clickMe").click(function() {
     game.color = $(this).attr("id");
-    console.log("Click Color " + game.color);  
     playerMove(); 
 });
 
@@ -94,7 +88,6 @@ function showSetting(){
 
 // Show error //
 function showError (){
-    console.log("from showError: wrong");
     let gameCount = 0;
     let playerError = setInterval(function() {
         $(".statement").text("Wrong! Try again");
@@ -139,10 +132,6 @@ function playSound(color) {
 // Player move //
 function playerMove (){
     game.playerCount.push(game.color);
-    console.log("from playerMove");
-    console.log(game.gameCount);
-    console.log(game.playerCount);
-    console.log(game.color);
     addTempClass(game.color);   
     // check player count //
     checkPlayerCount();
@@ -167,7 +156,6 @@ function checkWin () {
     if(!game.good) {
         // if strict mode//
         if(game.strict){
-            console.log("from playerMove " + game.strict);
             game.gameCount = [];
             game.level = 1;
         }
@@ -195,7 +183,6 @@ function checkWin () {
 
 // Game move //
 function gameMove(){
-    console.log("from gameMove " + game.level);
     $(".statement").text(game.level);
     if(game.good){
         game.generateRandomColor();

@@ -130,7 +130,7 @@ div.col-md-12 {
   background-color: rgb(164, 89, 240);
   border: none;
   padding: 4px 4px;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   height: 45px;
@@ -147,7 +147,7 @@ div.col-md-12 {
 
 #btn-start {
   font-size: 1em;
-  border-radius: 50%;
+  border-radius: 10px;
   border: none;
   padding: 4px 4px;
   width: 100px;
@@ -162,6 +162,14 @@ div.col-md-12 {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+
+.btn-danger:focus {
+  box-shadow: none;
+}
+
+.btn:focus {
+  box-shadow: none;
 }
 
 
